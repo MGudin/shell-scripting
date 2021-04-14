@@ -1,0 +1,23 @@
+#!/bin/sh
+
+case $1 in
+    -u|--udp)
+    connections=$(ss -nlHu)
+    protocol="UDP"
+    ;;
+    -t|--tcp)
+    connections=$(ss -nlHt)
+    protocol="TCP"
+    ;;
+    "")
+    echo "No protocol given"
+    exit 1 
+    ;;
+    *)
+    echo "unknown option"
+    exit 2 
+    ;;
+esac;
+
+echo "List open $protocol ports on local machine:"
+echo $connections | grep -o ":[[:digit:]]\{1,4\}" | sort -n | uniq | sed -e 's/:/\t\*\t/g' 
