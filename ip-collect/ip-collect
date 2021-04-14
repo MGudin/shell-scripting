@@ -1,0 +1,3 @@
+#!/bin/sh
+ips=$(ip -4 address | grep -Eo "([[:digit:]]+(\.|\/)){4}[[:digit:]]{1,2}" | tr "\n" ",")
+echo ${ips: : -1}
