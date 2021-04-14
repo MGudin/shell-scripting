@@ -10,6 +10,7 @@ Por ejemplo:
 Para puertos tcp:
 
 ```sh
+./my-listen --tcp
 List open TCP ports on local machine:
 *   80
 *   22
