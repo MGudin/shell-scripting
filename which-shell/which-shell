@@ -1,0 +1,8 @@
+#!/bin/sh
+IFS=
+shells=$(cat /etc/passwd | cut -d: -f1,7)
+if [[ $1 ]]; then
+    echo $shells | grep $1
+else
+    echo $shells
+fi
